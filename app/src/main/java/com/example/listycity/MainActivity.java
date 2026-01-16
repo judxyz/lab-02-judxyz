@@ -70,24 +70,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button_del.setOnClickListener(new View.OnClickListener() {
+        cityList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                // listen for button click in cityList
-                cityList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                button_del.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    public void onClick(View v) {
+                        // listen for button click in cityList
                         dataList.remove(position);
                         cityAdapter.notifyDataSetChanged();
-                        cityList.setOnItemClickListener(null);
+                        button_del.setOnClickListener(null);
                         Toast.makeText(MainActivity.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
 
+
                     }
+
                 });
 
-            }
 
+            }
         });
+
 
         button_submit.setOnClickListener(new View.OnClickListener() {
             @Override
